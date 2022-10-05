@@ -1,6 +1,10 @@
 package com.apps.bookfarm.Author;
 
-import org.springframework.web.bind.annotation.RestController;
+import com.apps.bookfarm.Model.Author;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class AuthorController {
@@ -9,9 +13,9 @@ public class AuthorController {
     private final AuthorServiceImpl authorService;
 
     @Autowired
-    public AutoController(AuthorRepository authorRepository, AuthorServiceImpl authorService) {
+    public AuthorController(AuthorRepository authorRepository, AuthorServiceImpl authorService) {
         this.authorRepository = authorRepository;
-        this.autoService = authorService;
+        this.authorService = authorService;
     }
 
     @GetMapping("/author")
@@ -19,7 +23,7 @@ public class AuthorController {
         return authorService.getAuthors();
     }
 
-    @GetsMapping("/authors/{id}")
+    @GetMapping("/authors/{id}")
     Author oneAuthor (@PathVariable Long id){
         return authorRepository.findById(id).orElseThrow(()-> new AuthorNotFoundException(id));
     }

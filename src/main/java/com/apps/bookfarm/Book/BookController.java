@@ -1,5 +1,9 @@
 package com.apps.bookfarm.Book;
 
+import com.apps.bookfarm.Model.Book;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 public class BookController {
 
@@ -14,24 +18,19 @@ public class BookController {
 
     //Aggregate root
     @GetMapping("/books")
-    Iterable<Book> allBooks (){
+    Iterable<Book> allBooks() {
         return bookService.getBooks();
     }
     //end::get-aggregate-root[]
 
     @GetMapping("/Books/{id}")
-    Book oneBook (@PathVariable Long id){
-        return bookRepository.findById(id).orElseThrow(()-> new BookNotFoundException(id));
+    Book oneBook(@PathVariable Long id) {
+        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
     }
 
-    @GetMapping("/authors/contacts/{phone}")
-    List<Book> bookIsbn (@PathVariable int isbn){
-        return bookRepository.findByIsbn(isbn);
-    }
-
-    @PostMapping("/authors")
-    public void addNewBook(@RequestBody Book newBook){
-        bookService.addNewBook(newBook);
+    @PostMapping("/books/{id}")
+    Book addBook(@RequestBody Book book, @PathVariable Long id) {
+        return bookRepository.save(book);
     }
 
     @DeleteMapping("/books/{id}")

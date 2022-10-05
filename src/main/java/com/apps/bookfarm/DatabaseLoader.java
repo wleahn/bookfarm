@@ -22,7 +22,7 @@ public class DatabaseLoader {
             authorRepository.save(new Author("Kate Williams", 23567));
             authorRepository.save(new Author("John Mutiso", 56789));
 
-           bookRepository.save(new Book("The Art of CS", authorRepository.findById(1L), "MacMillan", 26383655, 200 "CS"));
+           bookRepository.save(new Book("The Art of CS",  "MacMillan", 26383655, 200, "CS"));
 
             authorRepository.findAll().forEach(author -> log.info("Preload Author: " + author));
             bookRepository.findAll().forEach(book -> log.info("Preload Book: " + book));

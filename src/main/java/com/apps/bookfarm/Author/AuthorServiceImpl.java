@@ -1,10 +1,10 @@
 package com.apps.bookfarm.Author;
 
 import com.apps.bookfarm.Model.Author;
-import com.apps.bookfarm.Author.AuthorRepository;
-import com.apps.bookfarm.Author.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -17,7 +17,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Iterable<Author> getAuthors() {
+    public List<Author> getAuthors() {
         return authorRepository.findAll();
     }
 

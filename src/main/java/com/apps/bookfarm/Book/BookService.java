@@ -1,21 +1,21 @@
 package com.apps.bookfarm.Book;
 
-import com.apps.bookfarm.Model.Author;
 import com.apps.bookfarm.Model.Book;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 public interface BookService {
-    public Iterable<Book> getBooks();
-    public void addNewBook(Book book);
 
-    void addNewAuthor(Author author);
+    public List<Book> getBooks();
 
-    void addNewAuthor(Author author);
 
     public void removeBook(Long id);
 
-    void addNewAuthor(Book book);
 
-    void addNewAuthor(Book book);
 
-    void removeBook(int id);
+    void addBook(Book book);
+
+    void updateBook(@RequestBody Book book , @PathVariable Long id);
 }

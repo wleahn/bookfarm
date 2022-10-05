@@ -31,7 +31,7 @@ public class Book {
     @Column(name = "BOOK SUBJECT")
     private String subject;
 
-    public Book(Long bookId, String title, Author author, String publisher, int isbn, int length, String subject) {
+    public Book(String title, String publisher, int isbn, int length, String subject) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
